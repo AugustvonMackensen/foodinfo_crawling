@@ -17,7 +17,7 @@ def run():
     # selenium 업그레이드 된 이후 driver 등록 코드
     # chromedriver.exe 굳이 프로젝트 폴더에 안 넣어도 됨
     # 가나다순으로 크롤링, 페이징 관련 문제로 있어 ㄱ~ㅎ으로 나눠서 처리.
-    # get_item(27, 'ㄱ')
+    get_item(27, 'ㄱ')
     get_item(4, 'ㄴ')
     get_item(18, 'ㄷ')
     get_item(18, 'ㅁ')
