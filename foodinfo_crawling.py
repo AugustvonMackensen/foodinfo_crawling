@@ -38,8 +38,8 @@ def get_item(n, ch):
         food_title = ""
         food_info = ""
         # 사이트 접속
-        url = 'https://terms.naver.com/list.naver?cid=42701&categoryId=42708&so=st3.asc&viewType=&categoryType= \
-              &index='+ str(ch) + '&page='+ n + "'"
+        url = 'https://terms.naver.com/list.naver?cid=42701&categoryId=42708&so=st3.asc&viewType= \
+              &categoryType='+ ch + '&page='+ str(page) + "'"
         driver.get(url)
         info_elements = driver.find_elements(By.CSS_SELECTOR, 'div.list_wrap > ul > li')
         info_num = len(info_elements)
