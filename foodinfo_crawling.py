@@ -32,6 +32,7 @@ def run():
     get_item(9, 'ㅎ')
 
     print(food_dict)
+    return food_dict
 # 페이지 최종 숫자와 한글 자음 입력받아 메소드 실행
 def get_item(n, ch):
     for page in range(1, n+1):
