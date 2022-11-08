@@ -49,7 +49,8 @@ def get_item(n, ch):
                 driver.find_element(By.CSS_SELECTOR, 'div.list_wrap > ul > li:nth-child(' + str(item) + ') > div > \
                                     div.subject > strong > a:nth-child(1)').send_keys(Keys.ENTER)
                 food_title = driver.find_element(By.CSS_SELECTOR, 'div.section_wrap > div.headword_title > h2').text
-                food_info = driver.find_elements(By.CSS_SELECTOR, '#size_ct > p')
+                # 개행문자 제거
+                food_info = driver.find_element(By.CSS_SELECTOR, '#size_ct > p').text.replace('\n', '')
                 driver.back()  # 뒤로 가기
                 if(item == info_num):
                     break
@@ -57,6 +58,8 @@ def get_item(n, ch):
                 driver.back()
                 continue
             else:
-                food_dict[food_title] = food_info
+                # 음식설명이 있는 데이터만 딕셔너리에 저장
+                if food_info is not None:
+                    food_dict[food_title] = food_info
 
 
