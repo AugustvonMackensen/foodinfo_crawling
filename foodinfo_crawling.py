@@ -4,9 +4,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
 
 driver = wd.Chrome(service=Service(ChromeDriverManager().install()))
 
@@ -31,8 +28,8 @@ def run():
     get_item(4, 'ㅍ')
     get_item(9, 'ㅎ')
 
-    print(food_dict)
     return food_dict
+
 # 페이지 최종 숫자와 한글 자음 입력받아 메소드 실행
 def get_item(n, ch):
     for page in range(1, n+1):
