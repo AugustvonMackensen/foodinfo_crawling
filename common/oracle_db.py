@@ -4,7 +4,7 @@ import cx_Oracle
 
 dbUser = 'ADMIN'
 dbPasswd = 'Gammiproject!1'
-dsn = 'gammidb_high'
+dsn = 'gammi2_high'
 def oracle_init():
     cx_Oracle.init_oracle_client('./instantclient_21_6')
 
