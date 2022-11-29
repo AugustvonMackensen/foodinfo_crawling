@@ -10,10 +10,10 @@ if __name__ == '__main__':
         conn = oradb.connect()
         cursor = conn.cursor()
 
-        query = 'insert into foodinfo(food_name, food_content) values(%s, %s)'
+        query = 'insert into foodinfo(food_name, food_content) values(:1, :2)'
         food_val = list(food_dict.items())
         cursor.executemany(query, food_val)
-        oradb.commit()
+        oradb.commit(conn)
         
         # 삽입결과 확인
         resultset = cursor.execute('select * from foodinfo').fetchall()
