@@ -11,13 +11,15 @@ if __name__ == '__main__':
         cursor = conn.cursor()
 
         query = 'insert into foodinfo(food_name, food_content) values(%s, %s)'
-        foodname_list = list(food_dict.keys())
-        foodinfo_list = list(food_dict.items())
-
-        for item in range(len(food_dict)):
-            foodinfo_val = (foodname_list[item], foodinfo_list[item])
-            cursor.execute(query, foodinfo_val)
-            oradb.commit(conn)
+        food_val = list(food_dict.items())
+        cursor.executemany(query, food_val)
+        oradb.commit()
+        
+        # 삽입결과 확인
+        resultset = cursor.execute('select * from foodinfo').fetchall()
+        
+        for row in resultset:
+            print(row) # 행 단위 출력
     except Exception as msg:
         oradb.rollback(conn)
         print(conn)
@@ -25,4 +27,5 @@ if __name__ == '__main__':
     finally:
         cursor.close()
         oradb.close(conn)
+
 

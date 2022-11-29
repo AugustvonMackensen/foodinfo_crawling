@@ -31,7 +31,7 @@ def run():
         driver.get(url)
 
         keyword = kor_title[item]
-        time.sleep(5)
+        time.sleep(1)
         try:
             driver.find_element(By.CSS_SELECTOR, '#term_query').send_keys(keyword)
             driver.find_element(By.CSS_SELECTOR, '#terms_search_form > fieldset > div > input.btn_search._search').click()

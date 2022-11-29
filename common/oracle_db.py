@@ -6,7 +6,7 @@ dbUser = 'ADMIN'
 dbPasswd = 'Gammiproject!1'
 dsn = 'gammi2_high'
 def oracle_init():
-    cx_Oracle.init_oracle_client('./instantclient_21_6')
+    cx_Oracle.init_oracle_client('C:/instantclient_21_6')
 
 def connect():
     try:
