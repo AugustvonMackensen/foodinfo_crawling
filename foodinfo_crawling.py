@@ -13,7 +13,6 @@ driver = wd.Chrome(options=options(), service=Service(ChromeDriverManager().inst
 food_dict = {}
 
 def run():
-    # 전통향토음식 음식정보 크롤링
     # selenium 업그레이드 된 이후 driver 등록 코드
     # chromedriver.exe 굳이 프로젝트 폴더에 안 넣어도 됨
 
