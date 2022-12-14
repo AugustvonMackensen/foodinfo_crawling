@@ -9,11 +9,11 @@ from collections import Counter
 
 
 if __name__ == '__main__':
-    # food_dict = crawling.run()
-    # # ----- 보고서용 시각화 처리 코드 ------------------------
-    # with open('food_info.txt', 'w', encoding='utf-8') as f:
-    #     for title,content in food_dict.items():
-    #         f.write(f'{title} : {content}\n')
+    food_dict = crawling.run()
+    # ----- 보고서용 시각화 처리 코드 ------------------------
+    with open('food_info.txt', 'w', encoding='utf-8') as f:
+        for title,content in food_dict.items():
+            f.write(f'{title} : {content}\n')
 
     crawling_txt = open('food_Info.txt', 'rt', encoding='utf-8').read()
 
@@ -51,29 +51,29 @@ if __name__ == '__main__':
     plt.show()
 
     # --------------------- DB 저장 처리 구문 -------------------------------------------------
-    # conn = ''
-    # cursor = ''
-    # try:
-    #     oradb.oracle_init()
-    #     conn = oradb.connect()
-    #     cursor = conn.cursor()
-    #
-    #     query = 'insert into foodinfo(food_name, food_content) values(:1, :2)'
-    #     food_val = list(food_dict.items())
-    #     cursor.executemany(query, food_val)
-    #     oradb.commit(conn)
-    #
-    #     # 삽입결과 확인
-    #     resultset = cursor.execute('select * from foodinfo').fetchall()
-    #
-    #     for row in resultset:
-    #         print(row) # 행 단위 출력
-    # except Exception as msg:
-    #     oradb.rollback(conn)
-    #     print(conn)
-    #     print('크롤링 데이터 삽입 실패 : ', msg)
-    # finally:
-    #     cursor.close()
-    #     oradb.close(conn)
+    conn = ''
+    cursor = ''
+    try:
+        oradb.oracle_init()
+        conn = oradb.connect()
+        cursor = conn.cursor()
+
+        query = 'insert into foodinfo(food_name, food_content) values(:1, :2)'
+        food_val = list(food_dict.items())
+        cursor.executemany(query, food_val)
+        oradb.commit(conn)
+
+        # 삽입결과 확인
+        resultset = cursor.execute('select * from foodinfo').fetchall()
+
+        for row in resultset:
+            print(row) # 행 단위 출력
+    except Exception as msg:
+        oradb.rollback(conn)
+        print(conn)
+        print('크롤링 데이터 삽입 실패 : ', msg)
+    finally:
+        cursor.close()
+        oradb.close(conn)
 
 
